@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+  <div class="centered">
+    <p>Password</p>
+    <div class="login-container">
+      <input type="password" id="password" placeholder="Enter Password">
+      <button onclick="checkPassword()">Enter</button>
+      <p id="error-message" class="error"></p>
+    </div>
+  </div>
+
+  <script>
+    // Helper function to securely hash the password
+    async function hashPassword(password) {
+      const msgBuffer = new TextEncoder().encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function checkPassword() {
+      const correctHash = "b838dcb06e04bee2442c0da97bc52efb54e9455a07435fe4040148cab17e9938";
+      const enteredPassword = document.getElementById('password').value;
+      const errorMessage = document.getElementById('error-message');
+      const enteredHash = await hashPassword(enteredPassword);
+
+      if (enteredHash === correctHash) {
+        sessionStorage.setItem('authenticated', 'true');
+        window.location.href = "content.html";
+      } else {
+        errorMessage.textContent = "ACCESS DENIED.";
+        document.getElementById('password').value = "";
+      }
+    }
+
+    document.getElementById('password').addEventListener('keyup', function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        checkPassword();
+      }
+    });
+
+  </script>
+</body>
+
+</html>

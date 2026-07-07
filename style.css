@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background-color: black;
+  color: white;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+@keyframes terminal-flicker {
+
+  0%,
+  12%,
+  14%,
+  35%,
+  37%,
+  62%,
+  64%,
+  88%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+
+  13%,
+  36%,
+  89% {
+    opacity: 0.4;
+  }
+
+  63% {
+    opacity: 0.1;
+  }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200vw;
+  height: 200vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 9999;
+  animation: static-noise 0.4s step-end infinite;
+}
+
+@keyframes static-noise {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-1%, -1%);
+  }
+
+  20% {
+    transform: translate(1%, 2%);
+  }
+
+  30% {
+    transform: translate(-2%, -2%);
+  }
+
+  40% {
+    transform: translate(2%, 1%);
+  }
+
+  50% {
+    transform: translate(-1%, 2%);
+  }
+
+  60% {
+    transform: translate(2%, -1%);
+  }
+
+  70% {
+    transform: translate(-2%, 1%);
+  }
+
+  80% {
+    transform: translate(1%, -2%);
+  }
+
+  90% {
+    transform: translate(2%, 2%);
+  }
+}
+
+.login-container {
+  margin-top: 20px;
+}
+
+#password {
+  font-family: 'Roboto Mono', monospace;
+  padding: 8px;
+  font-size: 1em;
+}
+
+button {
+  font-family: 'Roboto Mono', monospace;
+  padding: 8px 12px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100vh - 150px);
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* --- Underground Blog Styles --- */
+
+.breadcrumb {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  border-bottom: 1px dashed white;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.blog-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.blog-main {
+  flex: 3;
+  min-width: 250px;
+}
+
+.blog-sidebar {
+  flex: 1;
+  min-width: 200px;
+  border-right: 2px dashed white;
+  padding-right: 20px;
+}
+
+.blog-sidebar ul {
+  list-style-type: none;
+  padding-right: 0;
+}
+
+.blog-sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.blog-sidebar a:hover {
+  background-color: white;
+  color: white;
+}
+
+.blog-post {
+  margin-bottom: 40px;
+}
+
+.blog-post h2 {
+  font-size: 1.2em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.date,
+.status-text {
+  font-family: 'Roboto Mono', monospace;
+  color: #bbb;
+  font-size: 0.9em;
+}
+
+/* Mobile adjustments for the sidebar */
+@media (max-width: 800px) {
+  .blog-layout {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    border-right: none;
+    border-top: 2px dashed white;
+    padding-right: 0;
+    padding-top: 20px;
+  }
+}

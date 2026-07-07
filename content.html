@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Granted</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.replace("index.html");
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="breadcrumb">
+        <a href="index.html">System Root</a> &gt; <a>Gateway</a> &gt; <span>[CLASSIFIED LOGS]</span>
+    </nav>
+
+    <header class="blog-header">
+        <h1>_The Underground Broadcast</h1>
+        <p>Access Granted. Proceed with caution, Operative.</p>
+    </header>
+
+    <div class="blog-layout">
+        <aside class="blog-sidebar">
+            <h3>[ Navigation ]</h3>
+            <ul>
+                <li><a href="#" onclick="showPost(event, 'latest-intel')">>> Log 01</a></li>
+                <li><a href="#" onclick="showPost(event, 'encrypted-files')">>> Log 02</a></li>
+                <li><a href="#" onclick="showPost(event, 'comms-channel')">>> Log 03</a></li>
+                <li><a href="#" onclick="showPost(event, 'final-entry')">>> ALERT</a></li>
+            </ul>
+
+            <h3>[ Status ]</h3>
+            <p class="status-text">Network: SECURE<br>Trace: NEGATIVE</p>
+        </aside>
+        <main class="blog-main">
+            <article id="latest-intel" class="blog-post">
+                <h2>Personal Log // 01 - The Awakening</h2>
+                <p class="date">Timestamp: [REDACTED]</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+
+            <article id="encrypted-files" class="blog-post" style="display: none;">
+                <h2>Personal Log // 02 - Close Call</h2>
+                <p class="date">Timestamp: [REDACTED]</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+
+            <article id="comms-channel" class="blog-post" style="display: none;">
+                <h2>Personal Log // 03 - Going Dark</h2>
+                <p class="date">Timestamp: [ERR_CONNECTION_REFUSED]</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+            </article>
+
+            <article id="final-entry" class="blog-post" style="display: none;">
+                <h2>Personal Log // 04 - COMPROMISED</h2>
+                <p class="date">Timestamp: [SYSTEM_FAILURE]</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p><a href="recovered_investigation.pdf" target="_blank">>> DOWNLOAD recovered_investigation.pdf
+                        &lt;&lt;</a></p>
+            </article>
+        </main>
+
+
+    </div>
+
+    <script>
+        function showPost(event, postId) {
+            // Prevent the browser from jumping to the top of the page when clicking links
+            event.preventDefault();
+
+            // Hide all blog posts
+            const allPosts = document.querySelectorAll('.blog-post');
+            allPosts.forEach(post => {
+                post.style.display = 'none';
+            });
+
+            // Show the selected blog post
+            const activePost = document.getElementById(postId);
+            if (activePost) {
+                activePost.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
