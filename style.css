@@ -48,47 +48,16 @@ body {
 }
 
 @keyframes static-noise {
-
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  10% {
-    transform: translate(-1%, -1%);
-  }
-
-  20% {
-    transform: translate(1%, 2%);
-  }
-
-  30% {
-    transform: translate(-2%, -2%);
-  }
-
-  40% {
-    transform: translate(2%, 1%);
-  }
-
-  50% {
-    transform: translate(-1%, 2%);
-  }
-
-  60% {
-    transform: translate(2%, -1%);
-  }
-
-  70% {
-    transform: translate(-2%, 1%);
-  }
-
-  80% {
-    transform: translate(1%, -2%);
-  }
-
-  90% {
-    transform: translate(2%, 2%);
-  }
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -10px -10px; }
+  20% { background-position: 10px 20px; }
+  30% { background-position: -20px -20px; }
+  40% { background-position: 20px 10px; }
+  50% { background-position: -10px 20px; }
+  60% { background-position: 20px -10px; }
+  70% { background-position: -20px 10px; }
+  80% { background-position: 10px -20px; }
+  90% { background-position: 20px 20px; }
 }
 
 .login-container {
