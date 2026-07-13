@@ -211,6 +211,11 @@ button {
   font-size: 0.9em;
 }
 
+.error-message {
+  font-family: 'Roboto Mono', monospace;
+  color: #a10000;
+}
+
 /* Mobile adjustments for the sidebar */
 @media (max-width: 800px) {
   .blog-layout {
